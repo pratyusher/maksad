@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Autoplay with Sound (Experimental)</title>
+  <title>My Local Video</title>
   <style>
     body {
       margin: 0;
@@ -20,25 +20,9 @@
   </style>
 </head>
 <body>
-  <video id="myVideo" autoplay controls>
+  <video autoplay muted controls>
     <source src="video.mp4" type="video/mp4">
     Your browser does not support the video tag.
   </video>
-
-  <script>
-    window.onload = function () {
-      const video = document.getElementById("myVideo");
-      const playPromise = video.play();
-
-      if (playPromise !== undefined) {
-        playPromise.then(() => {
-          // Playback started
-        }).catch((error) => {
-          // Most browsers block autoplay with sound, show message or log
-          console.log("Autoplay with sound was blocked. User interaction needed.");
-        });
-      }
-    };
-  </script>
 </body>
 </html>
