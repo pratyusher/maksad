@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Autoplay with Sound (Experimental)</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    video {
+      width: 100%;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+  <video id="myVideo" autoplay controls>
+    <source src="video.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <script>
+    window.onload = function () {
+      const video = document.getElementById("myVideo");
+      const playPromise = video.play();
+
+      if (playPromise !== undefined) {
+        playPromise.then(() => {
+          // Playback started
+        }).catch((error) => {
+          // Most browsers block autoplay with sound, show message or log
+          console.log("Autoplay with sound was blocked. User interaction needed.");
+        });
+      }
+    };
+  </script>
+</body>
+</html>
